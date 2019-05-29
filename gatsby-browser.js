@@ -1,7 +1,3 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
-
-// You can delete this file if you're not using it
+import "./src/styles/bootstrap-3.3.7/css/bootstrap.min.css"
+import "./src/styles/flexboxgrid.min.css"
+import "./src/styles/custom.css"
