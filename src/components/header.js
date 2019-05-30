@@ -1,17 +1,17 @@
 import { Link } from 'gatsby'
-import { graphql } from "gatsby"
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 
-const Header = ({data}) => {
+const Header = ({logo}) => {
+  console.log(logo)
+
   const [showNavbar, navbarToggle] = useState(false)
-  const airtable = data.airtable.data
 
   return (
     <header>
-      <nav className='navbar navbar-inverse .navbar-expand-lg'>
+      <nav className='navbar navbar-inverse navbar-expand-lg'>
         <Link to='/' className='navbar-brand navbar-left'>
-          <img src='{airtable.Logo}' alt='' id='logo'/>
+          <img src={logo} alt='' id='logo'/>
         </Link>
         <div className='container-fluid'>
           <div className='navbar-header'>
@@ -45,16 +45,6 @@ const Header = ({data}) => {
     </header>
   )
 }
-
-export const query = graphql `
-  {
-    airtable(table: {eq: "Config"}) {
-      data {
-        Logo
-      }
-    }
-  }
-`
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
