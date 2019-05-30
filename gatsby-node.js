@@ -27,14 +27,13 @@ exports.createPages = ({ graphql, actions }) => {
     result.data.allAirtable.edges.forEach(edge => {
     	// const pages = ['opportunties', 'concepts', 'personas', 'studies']
     	const table = edge.node.table.toLowerCase()
+      const recordId = edge.node.recordId
 
     	if(table === 'opportunities' || table === 'concepts' || table === 'personas' || table === 'studies' ){
     		createPage({
-    		  path: `/${table}/${edge.node.recordId}`,
+    		  path: `/${table}/${recordId}`,
     		  component: eval(`${table}Template`),
-    		  context: {
-    		  
-    		  },
+    		  context: { recordId },
     		})
     	}
     })
