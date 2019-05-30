@@ -51,7 +51,7 @@ module.exports = {
             // tableView: `YOUR_TABLE_VIEW_NAME`, // optional
             // queryName: `OPTIONAL_NAME_TO_IDENTIFY_TABLE`, // optional
             // mapping: { `CASE_SENSITIVE_COLUMN_NAME`: `VALUE_FORMAT` }, // optional, e.g. "text/markdown", "fileNode"
-            // tableLinks: [`CASE`, `SENSITIVE`, `COLUMN`, `NAMES`] // optional, for deep linking to records across tables.
+            tableLinks: [`Personas`] // optional, for deep linking to records across tables.
           },
           {
             baseId: `appPIDq5zBPVNqfLa`,
