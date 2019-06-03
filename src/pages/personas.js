@@ -6,7 +6,6 @@ import Card from '../components/card'
 
 const PersonasPage = ({ data }) => {
   const list = data.allAirtable.edges
-  console.log(list)
 
   return (
     <Layout>

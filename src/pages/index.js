@@ -5,8 +5,6 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 
 const IndexPage = ({data}) => {
-  console.log(data)
-  
   const company = data.airtable.data.Company
   
   return (

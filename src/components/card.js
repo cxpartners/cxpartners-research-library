@@ -3,7 +3,6 @@ import { Link } from 'gatsby'
 import { isEmpty } from '../utils'
 
 const Card = ({cards, base}) => {
-  console.log(cards)
 
   return (
      <React.Fragment>
@@ -11,7 +10,6 @@ const Card = ({cards, base}) => {
         .filter(v => !isEmpty(v.node) && !v.node.data.Hidden)
         .map((v, index) => {
           const data = v.node.data
-          console.log(data.Personas[0])
           return (
             <div key={ v.node.recordId }>      
               <Link to={`/${base}/${v.node.recordId}`} className='thumbnail'>

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 
 const Header = ({logo}) => {
-  console.log(logo)
 
   const [showNavbar, navbarToggle] = useState(false)
 
