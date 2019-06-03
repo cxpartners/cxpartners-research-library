@@ -1,4 +1,9 @@
+require('dotenv').config({
+  path: '.env',
+})
+
 const autoprefixer = require('autoprefixer');
+
 module.exports = {
   siteMetadata: {
     title: `cxpartners Research Library`,
@@ -37,21 +42,19 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/gatsby-icon.png`,
       },
     },
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-airtable`,
       options: {
-        apiKey: `keyf9SHvBLq1wbvMa`,
+        apiKey: process.env.AIRTABLE_API_KEY,
         tables: [
           {
             baseId: `appPIDq5zBPVNqfLa`,
             tableName: `Opportunities`,
-            // tableView: `YOUR_TABLE_VIEW_NAME`, // optional
-            // queryName: `OPTIONAL_NAME_TO_IDENTIFY_TABLE`, // optional
-            // mapping: { `CASE_SENSITIVE_COLUMN_NAME`: `VALUE_FORMAT` }, // optional, e.g. "text/markdown", "fileNode"
-            tableLinks: [`Personas`] // optional, for deep linking to records across tables.
+            tableLinks: [`Personas`, `Example_Concepts`, `Key_Insights`, `Supporting_Insights`]
           },
           {
             baseId: `appPIDq5zBPVNqfLa`,
@@ -88,8 +91,6 @@ module.exports = {
         ]
       }
     }
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
 }
