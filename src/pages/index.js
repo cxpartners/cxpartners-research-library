@@ -12,7 +12,7 @@ const IndexPage = ({data}) => {
       <div className='container'>
         <header>
           <h1>{company} Research Library</h1>
-          <p>This library is a central resource containing {company}'s customer insights and hypotheses, as well as details of the research activities that informed them.</p>
+          <p>This library is a central resource containing {company.slice(-1) === 's' ? `${company}'` : `${company}'s`} customer insights and hypotheses, as well as details of the research activities that informed them.</p>
         </header>
 
         <hr />
