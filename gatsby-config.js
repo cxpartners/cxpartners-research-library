@@ -52,40 +52,40 @@ module.exports = {
         apiKey: process.env.AIRTABLE_API_KEY,
         tables: [
           {
-            baseId: `appPIDq5zBPVNqfLa`,
+            baseId: process.env.AIRTABLE_BASE,
             tableName: `Opportunities`,
             tableLinks: [`Personas`, `Example_Concepts`, `Key_Insights`, `Supporting_Insights`]
           },
           {
-            baseId: `appPIDq5zBPVNqfLa`,
+            baseId: process.env.AIRTABLE_BASE,
             tableName: `Insights`,
           },
           {
-            baseId: `appPIDq5zBPVNqfLa`,
+            baseId: process.env.AIRTABLE_BASE,
             tableName: `Stories`,
           },
           {
-            baseId: `appPIDq5zBPVNqfLa`,
+            baseId: process.env.AIRTABLE_BASE,
             tableName: `Concepts`,
           },
           {
-            baseId: `appPIDq5zBPVNqfLa`,
+            baseId: process.env.AIRTABLE_BASE,
             tableName: `Personas`,
           },
           {
-            baseId: `appPIDq5zBPVNqfLa`,
+            baseId: process.env.AIRTABLE_BASE,
             tableName: `Activities`,
           },
           {
-            baseId: `appPIDq5zBPVNqfLa`,
+            baseId: process.env.AIRTABLE_BASE,
             tableName: `Studies`,
           },
           {
-            baseId: `appPIDq5zBPVNqfLa`,
+            baseId: process.env.AIRTABLE_BASE,
             tableName: `Modes`,
           },
           {
-            baseId: `appPIDq5zBPVNqfLa`,
+            baseId: process.env.AIRTABLE_BASE,
             tableName: `Config`,
           }
         ]
