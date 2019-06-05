@@ -2,15 +2,15 @@ import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 
-const Header = ({logo}) => {
+const Header = ({logo, brandColour}) => {
 
   const [showNavbar, navbarToggle] = useState(false)
 
   return (
     <header>
-      <nav className='navbar navbar-inverse navbar-expand-lg'>
+      <nav className='navbar navbar-inverse navbar-expand-lg' style={{background: brandColour}}>
         <Link to='/' className='navbar-brand navbar-left'>
-          <img src={logo} alt='' id='logo'/>
+          <img src={logo} alt='' className='navbar__logo'/>
         </Link>
         <div className='container-fluid'>
           <div className='navbar-header'>
