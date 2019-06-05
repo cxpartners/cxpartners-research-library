@@ -1,0 +1,29 @@
+body {
+	margin-bottom: 100px;
+}
+
+.four-col > div {
+  padding: 0.6em;
+}
+ 
+.four-col > div:nth-child(1) {
+  padding-left: 0;
+}
+
+.four-col > div:nth-child(4) {
+  padding-right: 0;
+}
+
+.gallery {
+	margin-top: 20px;
+}
+
+.space {
+	margin-top: 20px;
+}
+
+hr {
+	clear: both;
+  margin: 25px 0 25px 0;
+}
+

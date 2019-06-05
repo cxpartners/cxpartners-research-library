@@ -1,0 +1,61 @@
+header.masthead {
+	background-color: $offWhite;
+	position: relative;
+	overflow: hidden;	
+	height: 400px;
+	width:	100%;	
+}
+
+header .options {
+	position: relative;
+	margin-bottom: 5px;
+	z-index: 1000;
+	float: left;
+	width: 100%;
+}
+
+header .options .back {
+	float:left;
+	display: block;
+	color: $offBlack;
+	border: none;
+	background: none;
+}
+
+header .options .external {
+	float: right;
+	display: block;
+	color: #888;
+}
+
+
+header.masthead .container {
+	padding-top: 0;
+	position: relative;
+	height: 400px;	
+}
+
+header.masthead img {
+	display: block;
+	position: absolute;	
+	top: -9999px;
+	bottom: -9999px;
+	left: -9999px;
+	right: -9999px;
+	margin: auto;
+}
+
+header.masthead .title {
+	position: absolute;
+	bottom: 0;
+	background-color: #ffffffcc;
+	padding: 30px;
+	left: -20px;
+	width: 100%;
+}
+
+header.masthead .title h1 {
+	margin: 0;
+	padding: 0;
+	max-width: 1000px;
+}
