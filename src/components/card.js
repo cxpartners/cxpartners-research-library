@@ -11,7 +11,7 @@ const Card = ({cards, base}) => {
         .map((v, index) => {
           const data = v.node.data
           return (
-            <div key={ v.node.recordId }>      
+            <div key={ v.node.recordId } class='col-xs-12 col-sm-6 col-lg-3'>      
               <Link to={`/${base}/${v.node.recordId}`} className='thumbnail'>
                 <div className='image' data-toggle='tooltip' style={{ backgroundColor: data.Colour }} >
                   { data.Priority && <span className='priority'>PRIORITY</span>}

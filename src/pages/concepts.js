@@ -16,7 +16,7 @@ const ConceptsPage = ({ data }) => {
         </header>
 
         <hr />
-        <div className="four-col">
+        <div className="row">
         { list && <Card base='concepts' cards={list}/> }
         </div>    
       </div>
