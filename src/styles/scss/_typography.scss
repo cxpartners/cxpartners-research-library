@@ -1,17 +1,17 @@
 body {
-  font-family: "gothamRounded-book", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  letter-spacing: -0.5px;
+  font-family: $font-regular;
 }
 
 body p, a {
-  color: $primaryColour;
+  color: $black;
 }
 
 h1 {
   font-size: 4.2em;
   font-weight: normal;
-  margin: 85px 0 0 0;
+  margin: 150px 0 0 0;
   padding-bottom: 15px;
+  
 }
 
 h2 {
@@ -21,18 +21,22 @@ h2 {
   padding: 50px 0 30px 0;
 }
 
-h1, h2 {
-	color: $primaryColour;
+h1, 
+h2,
+h3 {
+	color: $black;
+  font-family: $font-bold;
 }
 
 h3 {
 	margin-top: 10px;
-	font-size: 2rem;
-	line-height: 1.2em;	
+	font-size: 1.6rem;
+	line-height: 1.2em;
+  font-weight: bold;
 }
 
 h4 {
-  color: $primaryColour; 
+  color: $black; 
 }
 
 h5 {

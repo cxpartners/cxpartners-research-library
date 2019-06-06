@@ -1,10 +1,14 @@
 .navbar {
 	margin-bottom: 0;
   border-radius: 0;
-  color: $white;
+  color: $black;
   padding: 2rem;
   font-size: 1.2em;
   border: none;
+  border-bottom: 1px solid $borderLight;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
 }
 
 .navbar-brand { 
@@ -19,13 +23,14 @@
 .navbar-inverse {
 	
 	.navbar-nav li a {
-	  color: $white;
-	  font-weight: 200;
-	  letter-spacing: 1px;
-		transition: color .1s ease-in-out;	
+	  color: $black;
 		
 		&:hover {
 	 		color: $highlight;
+		}
+
+		&:focus {
+			color: $black;
 		}
 	}
 }
