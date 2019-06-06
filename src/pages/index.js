@@ -2,6 +2,11 @@ import React from "react"
 import { graphql } from "gatsby"
 import { Link } from "gatsby"
 
+import opportunitiesIcon from "../images/icon_bird.svg"
+import conceptsIcon from "../images/icon_desk-lamp.svg"
+import personasIcon from "../images/icon_paper-plane.svg"
+import studiesIcon from "../images/icon_woman.svg"
+
 import Layout from "../components/layout"
 
 const IndexPage = ({data}) => {
@@ -21,7 +26,7 @@ const IndexPage = ({data}) => {
           <div className="col-xs-12 col-sm-6 col-lg-3">
             <Link to="/opportunities/" className="thumbnail">
               <div className="image" style={{backgroundColor:'#E6F8FC'}}>
-                <img src="/icons/" width="100" alt=""/>
+                <img src={opportunitiesIcon} width="100" alt=""/>
               </div>
               <div className="text">
                 <h3>Opportunities</h3>
@@ -33,7 +38,7 @@ const IndexPage = ({data}) => {
           <div className="col-xs-12 col-sm-6 col-lg-3">
             <Link to="/concepts" className="thumbnail">
               <div className="image" style={{backgroundColor:'#FCF0EE'}}>
-                <img src="/icons/" width="100" alt=""/>
+                <img src={conceptsIcon} width="100" alt=""/>
               </div>
               <div className="text">
                 <h3>Concepts</h3>
@@ -45,7 +50,7 @@ const IndexPage = ({data}) => {
           <div className="col-xs-12 col-sm-6 col-lg-3">
             <Link to="/personas" className="thumbnail">
               <div className="image" style={{backgroundColor:'#EEF0F7'}}>
-                <img src="/icons/" width="100" alt=""/>
+                <img src={personasIcon} width="100" alt=""/>
               </div>
               <div className="text">
                 <h3>Personas</h3>
@@ -57,7 +62,7 @@ const IndexPage = ({data}) => {
           <div className="col-xs-12 col-sm-6 col-lg-3">
             <Link to="/studies" className="thumbnail">
               <div className="image" style={{backgroundColor:'#F0F9ED'}}>
-                <img src="/icons/" width="100" alt=""/>
+                <img src={studiesIcon} width="100" alt=""/>
               </div>
               <div className="text">
                 <h3>Studies</h3>
