@@ -12,7 +12,7 @@ export default ({ data, pageContext }) => {
     <Layout>
       
       <header className="masthead"  style={{ backgroundColor: item.Colour }}>      
-        <img src={ item.Image[0].url } height="60%" alt="" />
+        <img src={ item.Image && item.Image[0].url } height="60%" alt="" />
         <div className="container">
           <div className="title">
             <div className="options">

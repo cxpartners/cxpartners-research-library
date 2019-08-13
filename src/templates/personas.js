@@ -29,7 +29,7 @@ export default ({data, pageContext }) => {
         
         <div className="one-col">
           <h2>Summary</h2>
-          <p>{ item.Notes }</p>
+          <p>{ item.Notes && item.Notes }</p>
           { item.Image && (
             <a target='_blank' rel="noopener noreferrer" href={ item.Diagram && item.Diagram[0].url }> 
               <div className="persona-img" >
