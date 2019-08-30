@@ -8,12 +8,14 @@ import personasIcon from "../images/icon_paper-plane.svg"
 import studiesIcon from "../images/icon_woman.svg"
 
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 const IndexPage = ({data}) => {
   const company = data.airtable.data.Company
   
   return (
     <Layout>
+      <SEO title="Home" />
       <div className='container'>
         <header>
           <h1>{company} Research Library</h1>

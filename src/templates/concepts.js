@@ -1,12 +1,15 @@
 import React from "react"
 import { graphql } from "gatsby"
+
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 export default ({data, pageContext}) => {
   const item = data.airtable.data
   
   return (
     <Layout>
+      <SEO title={ item.Name }/>
       <header className="masthead">    
         <img src={ item.Image && item.Image[0].url } width="100%" alt=""/>
         <div className="container">
@@ -61,7 +64,6 @@ export default ({data, pageContext}) => {
             <p>{ item.User_Comments }</p>
           </blockquote>
             
-  
         </div>
           
       </div>

@@ -1,8 +1,10 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Link } from 'gatsby'
+
 import Layout from "../components/layout"
 import Insights from '../components/insights'
+import SEO from '../components/seo'
 
 export default ({ data, pageContext }) => {
   
@@ -10,7 +12,7 @@ export default ({ data, pageContext }) => {
     
   return (
     <Layout>
-      
+      <SEO title={ item.Name }/>
       <header className="masthead"  style={{ backgroundColor: item.Colour }}>      
         <img src={ item.Image && item.Image[0].url } height="60%" alt="" />
         <div className="container">

@@ -6,8 +6,8 @@ const autoprefixer = require('autoprefixer');
 
 module.exports = {
   siteMetadata: {
-    title: `cxpartners Research Library`,
-    description: `The alpha version  `,
+    title: `cxpartners' Research Library`,
+    description: `This example library is a demonstration of a central resource containing customer insights and hypotheses, as well as details of the research activities that informed them.`,
     author: `cxpartners`,
   },
   plugins: [
@@ -39,10 +39,10 @@ module.exports = {
         name: `Research Library`,
         short_name: `Research Library`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#0e8add`,
+        theme_color: `#0e8add`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`,
+        icon: `src/images/cxpartners-logo.png`,
       },
     },
     `gatsby-plugin-sass`,

@@ -3,12 +3,14 @@ import { graphql } from "gatsby"
 
 import Layout from '../components/layout'
 import Card from '../components/card'
+import SEO from '../components/seo'
 
 const StudiesPage = ({ data }) => {
   const list = data.allAirtable.edges
 
   return (
     <Layout>
+    <SEO title="Studies" />
       <div className="container">
         <header>
           <h1>Studies</h1>

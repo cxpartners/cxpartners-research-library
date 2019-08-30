@@ -1,12 +1,15 @@
 import React from "react"
 import { graphql } from "gatsby"
+
 import Layout from "../components/layout"
+import SEO from '../components/seo'
 
 export default ({data, pageContext }) => {
   const item = data.airtable.data
     
   return (
     <Layout>
+      <SEO title={ `${ item.Label }: ${ item.Name }` }/>
       <header className="masthead"  style={{ backgroundColor: item.Colour }}>
         <img src={ item.Image && item.Image[0].url } width="20%" alt="" />
         <div className="container">
