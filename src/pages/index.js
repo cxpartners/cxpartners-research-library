@@ -24,7 +24,7 @@ const IndexPage = ({data}) => {
 
         <hr />
 
-        <div className="row">
+        <div className="homepage-thumbnails row">
           <div className="col-xs-12 col-sm-6 col-lg-3">
             <Link to="/opportunities/" className="thumbnail">
               <div className="image" style={{backgroundColor:'#E6F8FC'}}>
