@@ -1,10 +1,10 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { StaticQuery, graphql } from "gatsby"
-import "../styles/scss/App.scss"
+import React from 'react';
+import PropTypes from 'prop-types';
+import { StaticQuery, graphql } from 'gatsby';
+import '../styles/scss/App.scss';
 
-import SEO from "./seo"
-import Header from "./header"
+import SEO from './seo';
+import Header from './header';
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -20,13 +20,16 @@ const Layout = ({ children }) => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <>
         <SEO title="Research Library" />
-        <Header logo={data.airtable.data.Logo[0].url} brandColour={data.airtable.data.Brand_Colour__Primary_} />
+        <Header
+          logo={data.airtable.data.Logo[0].url}
+          brandColour={data.airtable.data.Brand_Colour__Primary_}
+        />
         <div>
-          <main className='main'>
-            <div className='content-wrapper'>
+          <main className="main">
+            <div className="content-wrapper">
               {children}
             </div>
           </main>
@@ -35,10 +38,10 @@ const Layout = ({ children }) => (
       </>
     )}
   />
-)
+);
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;
