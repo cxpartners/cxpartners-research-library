@@ -6,6 +6,8 @@
   "author": "Henry Ball <henry_ball@hotmail.co.uk>",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "eslint": "^6.7.1",
+    "eslint-loader": "^3.0.2",
     "gatsby": "^2.18.4",
     "gatsby-image": "^2.2.34",
     "gatsby-plugin-manifest": "^2.2.30",
