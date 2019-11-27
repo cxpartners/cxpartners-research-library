@@ -102,9 +102,9 @@ IndexPage.defaultProps = {
 };
 
 IndexPage.propTypes = {
-  data: PropTypes.shapeOf({
-    airtable: PropTypes.shapeOf({
-      data: PropTypes.shapeOf({
+  data: PropTypes.shape({
+    airtable: PropTypes.shape({
+      data: PropTypes.shape({
         Company: PropTypes.string,
       }),
     }),

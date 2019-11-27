@@ -6,7 +6,7 @@ import Layout from '../components/layout';
 import Insights from '../components/insights';
 import SEO from '../components/seo';
 
-const Opportunities = ({ data, pageContext }) => {
+const opportunities = ({ data, pageContext }) => {
   const item = data.airtable.data;
 
   return (
@@ -41,11 +41,11 @@ const Opportunities = ({ data, pageContext }) => {
               data-toggle="tooltip"
               title="Opportunities"
             >
-              { item.Attributes && item.Attributes.map((attribute, index) => (
-                <span key={index} className="badge badge-pill badge-primary">{ attribute }</span>
+              { item.Attributes && item.Attributes.map((attribute) => (
+                <span className="badge badge-pill badge-primary">{ attribute }</span>
               ))}
-              { item.Personas && item.Personas.map((persona, index) => (
-                <span key={index} className="badge badge-pill badge-secondary">{ persona.data.Label }</span>
+              { item.Personas && item.Personas.map((persona) => (
+                <span className="badge badge-pill badge-secondary">{ persona.data.Label }</span>
               ))}
             </p>
           </div>
@@ -158,22 +158,22 @@ export const query = graphql`
   }
 `;
 
-Opportunities.defaultProps = {
+opportunities.defaultProps = {
   data: {},
   pageContext: {},
 };
 
-Opportunities.propTypes = {
-  data: PropTypes.shapeOf({
-    airtable: PropTypes.shapeOf({
-      data: PropTypes.shapeOf({
+opportunities.propTypes = {
+  data: PropTypes.shape({
+    airtable: PropTypes.shape({
+      data: PropTypes.shape({
         Name: PropTypes.string,
       }),
     }),
   }),
-  pageContext: PropTypes.shapeOf({
+  pageContext: PropTypes.shape({
     recordId: PropTypes.string,
   }),
 };
 
-export default Opportunities;
+export default opportunities;

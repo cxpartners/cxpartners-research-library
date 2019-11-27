@@ -34,7 +34,7 @@ Insights.defaultProps = {
 Insights.propTypes = {
   title: PropTypes.string,
   insights: PropTypes.arrayOf(
-    PropTypes.shapeOf({
+    PropTypes.shape({
       recordId: PropTypes.string,
     }),
   ),

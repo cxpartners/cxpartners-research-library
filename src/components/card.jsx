@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import { isEmpty } from '../utils';
+import isEmpty from '../utils/isEmpty';
 
 const Card = ({
   cards,
@@ -14,8 +14,8 @@ const Card = ({
       { filteredCards.map((v) => {
         const { data } = v.node;
         return (
-          <div key={data.recordId} className="col-xs-12 col-sm-6 col-lg-3">
-            <Link to={`/${base}/${data.recordId}`} className="thumbnail">
+          <div key={v.node.recordId} className="col-xs-12 col-sm-6 col-lg-3">
+            <Link to={`/${base}/${v.node.recordId}`} className="thumbnail">
               <div className="image" data-toggle="tooltip" style={{ backgroundColor: data.Colour }}>
                 { data.Priority && <span className="priority">PRIORITY</span>}
                 { data.Image && !data.Illustration && data.Image[0].url.endsWith('.svg') && <img src={data.Image[0].url} height="110" alt="" />}
@@ -25,11 +25,11 @@ const Card = ({
               <div className="text">
                 <h3 data-toggle="tooltip" title="Opportunities">{ data.Name }</h3>
                 <p className="badges" data-toggle="tooltip" title="Opportunities">
-                  { data.Attributes && data.Attributes.map((attribute, index) => (
-                    <span className="badge badge-pill badge-primary" key={index}>{ attribute }</span>
+                  { data.Attributes && data.Attributes.map((attribute) => (
+                    <span className="badge badge-pill badge-primary">{ attribute }</span>
                   ))}
-                  { data.Personas && data.Personas.map((persona, index) => (
-                    <span className="badge badge-pill badge-secondary" key={index}>{persona.data.Name}</span>
+                  { data.Personas && data.Personas.map((persona) => (
+                    <span className="badge badge-pill badge-secondary">{persona.data.Name}</span>
                   ))}
                 </p>
               </div>

@@ -5,7 +5,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
-const Studies = ({ data, pageContext }) => {
+const studies = ({ data, pageContext }) => {
   const item = data.airtable.data;
 
   return (
@@ -76,22 +76,22 @@ export const query = graphql`
   }
 `;
 
-Studies.defaultProps = {
+studies.defaultProps = {
   data: {},
   pageContext: {},
 };
 
-Studies.propTypes = {
-  data: PropTypes.shapeOf({
-    airtable: PropTypes.shapeOf({
-      data: PropTypes.shapeOf({
+studies.propTypes = {
+  data: PropTypes.shape({
+    airtable: PropTypes.shape({
+      data: PropTypes.shape({
         Name: PropTypes.string,
       }),
     }),
   }),
-  pageContext: PropTypes.shapeOf({
+  pageContext: PropTypes.shape({
     recordId: PropTypes.string,
   }),
 };
 
-export default Studies;
+export default studies;

@@ -5,7 +5,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
-const Concepts = ({
+const concepts = ({
   data,
   pageContext,
 }) => {
@@ -49,8 +49,8 @@ const Concepts = ({
             <div>
               <hr />
               <h2>Illustrations</h2>
-              { item.Illustration.map((illustration, index) => (
-                <div className="three-col" key={index}>
+              { item.Illustration.map((illustration) => (
+                <div className="three-col">
                   <a
                     className="thumbnail pop"
                     target="_blank"
@@ -98,22 +98,35 @@ export const query = graphql`
   }
 `;
 
-Concepts.defaultProps = {
+concepts.defaultProps = {
   data: {},
   pageContext: {},
 };
 
-Concepts.propTypes = {
-  data: PropTypes.shapeOf({
-    airtable: PropTypes.shapeOf({
-      data: PropTypes.shapeOf({
+concepts.propTypes = {
+  data: PropTypes.shape({
+    airtable: PropTypes.shape({
+      data: PropTypes.shape({
         Name: PropTypes.string,
+        Image: PropTypes.arrayOf(
+          PropTypes.shape({
+            url: PropTypes.string,
+          }),
+        ),
+        Description: PropTypes.string,
+        Illustration: PropTypes.arrayOf(
+          PropTypes.shape({
+            url: PropTypes.string,
+          }),
+        ),
+        Learnings: PropTypes.string,
+        User_Comments: PropTypes.string,
       }),
     }),
   }),
-  pageContext: PropTypes.shapeOf({
+  pageContext: PropTypes.shape({
     recordId: PropTypes.string,
   }),
 };
 
-export default Concepts;
+export default concepts;

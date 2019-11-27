@@ -54,13 +54,15 @@ StudiesPage.defaultProps = {
 };
 
 StudiesPage.propTypes = {
-  data: PropTypes.shapeOf({
-    allAirtable: PropTypes.shapeOf({
-      edges: PropTypes.shapeOf({
-        node: PropTypes.shapeOf({
-          recordId: PropTypes.string,
+  data: PropTypes.shape({
+    allAirtable: PropTypes.shape({
+      edges: PropTypes.arrayOf(
+        PropTypes.shape({
+          node: PropTypes.shape({
+            recordId: PropTypes.string,
+          }),
         }),
-      }),
+      ),
     }),
   }),
 };
