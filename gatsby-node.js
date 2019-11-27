@@ -1,12 +1,12 @@
-const path = require(`path`)
+const path = require('path');
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
-  
-  const opportunitiesTemplate = path.resolve(`src/templates/opportunities.js`)
-  const conceptsTemplate = path.resolve(`src/templates/concepts.js`)
-  const personasTemplate = path.resolve(`src/templates/personas.js`)
-  const studiesTemplate = path.resolve(`src/templates/studies.js`)
+  const { createPage } = actions;
+
+  const opportunitiesTemplate = path.resolve('src/templates/opportunities.jsx');
+  const conceptsTemplate = path.resolve('src/templates/concepts.jsx');
+  const personasTemplate = path.resolve('src/templates/personas.jsx');
+  const studiesTemplate = path.resolve('src/templates/studies.jsx');
 
   return graphql(`
     query loadPagesQuery {
@@ -19,23 +19,23 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     }
-  `, { limit: 10000 }).then(result => {
+  `, { limit: 10000 }).then((result) => {
     if (result.data.errors) {
-      throw result.errors
+      throw result.errors;
     }
 
-    result.data.allAirtable.edges.forEach(edge => {
-    	// const pages = ['opportunties', 'concepts', 'personas', 'studies']
-    	const table = edge.node.table.toLowerCase()
-      const recordId = edge.node.recordId
+    result.data.allAirtable.edges.forEach((edge) => {
+      const pages = ['opportunities', 'concepts', 'personas', 'studies'];
+      const table = edge.node.table.toLowerCase();
+      const { recordId } = edge.node;
 
-    	if(table === 'opportunities' || table === 'concepts' || table === 'personas' || table === 'studies' ){
-    		createPage({
-    		  path: `/${table}/${recordId}`,
-    		  component: eval(`${table}Template`),
-    		  context: { recordId },
-    		})
-    	}
-    })
-  })
-}
+      if (pages.includes(table)) {
+        createPage({
+          path: `/${table}/${recordId}`,
+          component: eval(`${table}Template`),
+          context: { recordId },
+        });
+      }
+    });
+  });
+};
