@@ -71,6 +71,7 @@ export const query = graphql`
           url
           filename
         }
+        Colour
       }
     }
   }
@@ -86,6 +87,21 @@ studies.propTypes = {
     airtable: PropTypes.shape({
       data: PropTypes.shape({
         Name: PropTypes.string,
+        Image: PropTypes.arrayOf(
+          PropTypes.shape({
+            url: PropTypes.string,
+          }),
+        ),
+        Summary: PropTypes.string,
+        Process: PropTypes.string,
+        Images: PropTypes.arrayOf(
+          PropTypes.shape({
+            id: PropTypes.string,
+            url: PropTypes.string,
+            filename: PropTypes.string,
+          }),
+        ),
+        Colour: PropTypes.string,
       }),
     }),
   }),

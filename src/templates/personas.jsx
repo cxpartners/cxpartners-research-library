@@ -89,6 +89,19 @@ personas.propTypes = {
     airtable: PropTypes.shape({
       data: PropTypes.shape({
         Name: PropTypes.string,
+        Label: PropTypes.string,
+        Notes: PropTypes.string,
+        Image: PropTypes.arrayOf(
+          PropTypes.shape({
+            url: PropTypes.string,
+          }),
+        ),
+        Colour: PropTypes.string,
+        Diagram: PropTypes.arrayOf(
+          PropTypes.shape({
+            url: PropTypes.string,
+          }),
+        ),
       }),
     }),
   }),

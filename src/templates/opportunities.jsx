@@ -168,6 +168,60 @@ opportunities.propTypes = {
     airtable: PropTypes.shape({
       data: PropTypes.shape({
         Name: PropTypes.string,
+        Image: PropTypes.arrayOf(
+          PropTypes.shape({
+            url: PropTypes.string,
+          }),
+        ),
+        Colour: PropTypes.string,
+        Hidden: PropTypes.bool,
+        Summary: PropTypes.string,
+        Business_Value: PropTypes.string,
+        Design_Challenge: PropTypes.string,
+        Example_Concepts: PropTypes.arrayOf(
+          PropTypes.shape({
+            recordId: PropTypes.string,
+            data: PropTypes.shape({
+              Name: PropTypes.string,
+              Illustration: PropTypes.arrayOf(
+                PropTypes.shape({
+                  url: PropTypes.string,
+                }),
+              ),
+            }),
+          }),
+        ),
+        Attributes: PropTypes.string,
+        Personas: PropTypes.arrayOf(
+          PropTypes.shape({
+            data: PropTypes.shape({
+              Name: PropTypes.string,
+              Label: PropTypes.string,
+            }),
+          }),
+        ),
+        Key_Insights: PropTypes.arrayOf(
+          PropTypes.shape({
+            recordId: PropTypes.string,
+            data: PropTypes.shape({
+              Insight: PropTypes.string,
+            }),
+          }),
+        ),
+        Supporting_Insights: PropTypes.arrayOf(
+          PropTypes.shape({
+            recordId: PropTypes.string,
+            data: PropTypes.shape({
+              Insight: PropTypes.string,
+            }),
+          }),
+        ),
+        Story_1__Legacy_: PropTypes.string,
+        Story_1_Images___Legacy_: PropTypes.arrayOf(
+          PropTypes.shape({
+            url: PropTypes.string,
+          }),
+        ),
       }),
     }),
   }),
