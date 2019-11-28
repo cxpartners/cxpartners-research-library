@@ -9,41 +9,41 @@ const Header = ({
   const [showNavbar, navbarToggle] = useState(false);
 
   return (
-    <header>
+    <header className="header">
       <nav
-        className="navbar navbar-inverse navbar-expand-lg"
+        className="container"
         style={{ background: brandColour }}
       >
-        <Link to="/" className="navbar-brand navbar-left">
-          <img src={logo} alt="" className="navbar__logo" />
+        <Link to="/" className="logo">
+          <img src={logo} alt="" />
         </Link>
-        <div className="container-fluid">
-          <div className="navbar-header">
-            <button type="button" className="navbar-toggle" onClick={() => navbarToggle(!showNavbar)}>
-              <span className="icon-bar" />
-              <span className="icon-bar" />
-              <span className="icon-bar" />
-            </button>
-          </div>
-          <div className={showNavbar ? 'navbar-right' : 'navbar-right collapse'} id="myNavbar">
-            <ul className="nav navbar-nav">
-              <li className="nav__item">
-                <Link to="/" className="nav__link" activeClassName="nav__link--active">Home</Link>
-              </li>
-              <li className="nav__item">
-                <Link to="/opportunities" className="nav__link" activeClassName="nav__link--active">Opportunities</Link>
-              </li>
-              <li className="nav__item">
-                <Link to="/concepts" className="nav__link" activeClassName="nav__link--active">Concepts</Link>
-              </li>
-              <li className="nav__item">
-                <Link to="/personas" className="nav__link" activeClassName="nav__link--active">Personas</Link>
-              </li>
-              <li className="nav__item">
-                <Link to="/studies" className="nav__link" activeClassName="nav__link--active">Studies</Link>
-              </li>
-            </ul>
-          </div>
+        <div className={`nav-list nav-list-${showNavbar ? 'active' : ''}`}>
+          <button
+            type="button"
+            className={`hamburger hamburger--spin ${showNavbar ? 'is-active' : ''}`}
+            onClick={() => navbarToggle(!showNavbar)}
+          >
+            <span className="hamburger-box">
+              <span className="hamburger-inner" />
+            </span>
+          </button>
+          <ul>
+            <li>
+              <Link to="/" activeClassName="">Home</Link>
+            </li>
+            <li>
+              <Link to="/opportunities" activeClassName="link-active">Opportunities</Link>
+            </li>
+            <li>
+              <Link to="/concepts" activeClassName="link-active">Concepts</Link>
+            </li>
+            <li>
+              <Link to="/personas" activeClassName="link-active">Personas</Link>
+            </li>
+            <li>
+              <Link to="/studies" activeClassName="link-active">Studies</Link>
+            </li>
+          </ul>
         </div>
       </nav>
     </header>

@@ -1,46 +1,91 @@
-.navbar {
-	margin-bottom: 0;
-  border-radius: 0;
-  color: $black;
-  padding: 2rem;
-  font-size: 1.2em;
-  border: none;
-  border-bottom: 1px solid $borderLight;
-  position: fixed;
+.header {
+	position: fixed;
+	top: 0;
   width: 100%;
-  z-index: 1000;
-}
+	z-index: 1000;
+	border-bottom: 1px solid $borderLight;
 
-.navbar-brand { 
-	padding: 13px;
-}
-
-.navbar__logo { 
-	display: block; 
-	height: 25px;
-}
-
-.navbar-inverse {
+	.container {
+		display: flex;
+		justify-content: space-between;
+		padding: 1.5rem;
+		color: $black;
+		font-size: 1.2em;
+	}
 	
-	.navbar-nav li a {
-	  color: $black;
-		
-		&:hover {
-	 		color: $highlight;
+	.logo {
+		display: flex;
+		align-items: center;
+
+		img {
+			display: flex;
+			align-items: center;
+			height: 25px;
+		}
+	}
+
+	.nav-list {
+		display: flex;
+		align-items: center;
+
+		ul {
+			display: none;
 		}
 
-		&:focus {
-			color: $black;
+		li {
+			margin: 0 0.5rem;
+		}
+	}
+
+	.nav-list-active {
+		display: inline-block;
+		position: absolute;
+		background: $white;
+		left: 0;
+		top: 0;
+		height: 100vh;
+		width: 100vw;
+		animation: fadeIn 0.5s;
+
+		.hamburger {
+			position: absolute;
+			top: 1.5rem;
+			right: 1.5rem;
+		}
+
+		ul {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+		li {
+			margin: 0.5rem 0;
 		}
 	}
 }
 
-.nav__item .nav__link {
-	padding: 15px 10px;
+@media (min-width: $tablet-breakpoint) {
+	.header {
+		.nav-list {
+			.hamburger {
+				display: none;
+			}
+
+			ul {
+				display: flex;
+			}
+		}
+	}
 }
 
-@media (min-width: 767px) {
-	.collapse {
-		display: block;
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
 	}
 }

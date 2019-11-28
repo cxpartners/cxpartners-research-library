@@ -1,25 +1,15 @@
 body {
-	margin-bottom: 100px;
+  margin-bottom: 100px;
+  min-width: 320px;
 }
 
-.four-col > div {
-  padding: 0.6em;
-}
- 
-.four-col > div:nth-child(1) {
-  padding-left: 0;
+main {
+  margin: 4.5rem 0 0 0;
+  padding: 1rem;
 }
 
-.four-col > div:nth-child(4) {
-  padding-right: 0;
-}
-
-.gallery {
-	margin-top: 20px;
-}
-
-.space {
-	margin-top: 20px;
+.content-wrapper {
+  margin: 1rem 0 0 0;
 }
 
 hr {
