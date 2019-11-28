@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import opportunitiesIcon from '../images/icon_bird.svg';
 import conceptsIcon from '../images/icon_desk-lamp.svg';
@@ -9,9 +9,41 @@ import studiesIcon from '../images/icon_woman.svg';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import Thumbnail from '../components/thumbnail';
 
 const IndexPage = ({ data }) => {
   const company = data.airtable.data.Company;
+
+  const thumbnails = [
+    {
+      link: '/opportunities/',
+      backgroundColour: '#E6F8FC',
+      icon: opportunitiesIcon,
+      header: 'Opportunities',
+      description: 'Identified opportunities for delivering customer and business value',
+    },
+    {
+      link: '/concepts/',
+      backgroundColour: '#FCF0EE',
+      icon: conceptsIcon,
+      header: 'Concepts',
+      description: 'Potential solutions or interventions in response to the identified opportunities',
+    },
+    {
+      link: '/personas/',
+      backgroundColour: '#EEF0F7',
+      icon: personasIcon,
+      header: 'Personas',
+      description: 'Representative customer types based on needs, goals and observed behaviors',
+    },
+    {
+      link: '/studies/',
+      backgroundColour: '#F0F9ED',
+      icon: studiesIcon,
+      header: 'Studies',
+      description: 'Overview of research and design studies carried out that informed this library',
+    },
+  ];
 
   return (
     <Layout>
@@ -26,60 +58,21 @@ const IndexPage = ({ data }) => {
           </p>
         </header>
         <hr />
-        <div className="homepage-thumbnails row">
-          <div className="col-xs-12 col-sm-6 col-lg-3">
-            <Link to="/opportunities/" className="thumbnail">
-              <div className="image" style={{ backgroundColor: '#E6F8FC' }}>
-                <img src={opportunitiesIcon} width="100" alt="" />
-              </div>
-              <div className="text">
-                <h3>Opportunities</h3>
-                <p>
-                  Identified opportunities for delivering customer and business value
-                </p>
-              </div>
-            </Link>
-          </div>
-          <div className="col-xs-12 col-sm-6 col-lg-3">
-            <Link to="/concepts" className="thumbnail">
-              <div className="image" style={{ backgroundColor: '#FCF0EE' }}>
-                <img src={conceptsIcon} width="100" alt="" />
-              </div>
-              <div className="text">
-                <h3>Concepts</h3>
-                <p>
-                  Potential solutions or interventions in response to the identified opportunities
-                </p>
-              </div>
-            </Link>
-          </div>
-          <div className="col-xs-12 col-sm-6 col-lg-3">
-            <Link to="/personas" className="thumbnail">
-              <div className="image" style={{ backgroundColor: '#EEF0F7' }}>
-                <img src={personasIcon} width="100" alt="" />
-              </div>
-              <div className="text">
-                <h3>Personas</h3>
-                <p>
-                  Representative customer types based on needs, goals and observed behaviors
-                </p>
-              </div>
-            </Link>
-          </div>
-          <div className="col-xs-12 col-sm-6 col-lg-3">
-            <Link to="/studies" className="thumbnail">
-              <div className="image" style={{ backgroundColor: '#F0F9ED' }}>
-                <img src={studiesIcon} width="100" alt="" />
-              </div>
-              <div className="text">
-                <h3>Studies</h3>
-                <p>
-                  Overview of research and design studies carried out that informed this library
-                </p>
-              </div>
-            </Link>
-          </div>
-        </div>
+        <nav>
+          <ul>
+            { thumbnails.map((t) => (
+              <li>
+                <Thumbnail
+                  link={t.link}
+                  backgroundColour={t.backgroundColour}
+                  icon={t.icon}
+                  header={t.header}
+                  description={t.description}
+                />
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </Layout>
   );
