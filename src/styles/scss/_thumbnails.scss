@@ -6,8 +6,8 @@
 
 .thumbnail {
   display: block;
-	position: relative;
-  border-radius: 5px ;
+	border: 1px solid $borderLight;
+  border-radius: 4px ;
   margin-bottom: 2rem;
   text-align: center;
   padding: 0 !important;
@@ -32,27 +32,19 @@
 	}
 
 	.image {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		background-color: $white;
 		position: relative;
 		overflow: hidden;	
 		width: 100%;
-		height: 200px;
+		height: 250px;
 		border-radius: 4px 4px 0 0;
-		padding-top: 1rem;
-	}
-
-	.image img {
-		display: block;
-		position: absolute;
-		top: -9999px;
-		bottom: -9999px;
-		left: -9999px;
-		right: -9999px;
-		margin: auto;
 	}
 
 	.text {
-		padding: 2rem 0.5rem 0 0.5rem;
+		padding: 2rem 0.5rem;
 
 		h3 {
 			margin-top: 0;
@@ -67,11 +59,6 @@
   		display: none;
   	}
 	}
-}
-
-a.thumbnail, 
-a.thumbnail:hover {
-  text-decoration: none !important;
 }
 
 a.thumbnail.active, 
