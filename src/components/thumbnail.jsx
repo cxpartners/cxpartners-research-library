@@ -4,13 +4,13 @@ import { Link } from 'gatsby';
 
 const Thumbnail = ({
   link,
-  backgroundColour,
+  backgroundColor,
   icon,
   header,
   description,
 }) => (
   <Link to={link} className="thumbnail">
-    <div className="image" style={{ backgroundColor: backgroundColour }}>
+    <div className="image" style={{ backgroundColor }}>
       <img src={icon} width="100" alt="" />
     </div>
     <div className="text">
@@ -24,7 +24,7 @@ const Thumbnail = ({
 
 Thumbnail.propTypes = {
   link: PropTypes.string.isRequired,
-  backgroundColour: PropTypes.string.isRequired,
+  backgroundColor: PropTypes.string.isRequired,
   icon: PropTypes.elementType.isRequired,
   header: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,

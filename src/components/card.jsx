@@ -1,58 +1,70 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import isEmpty from '../utils/isEmpty';
+
+const shortid = require('shortid');
 
 const Card = ({
-  cards,
+  recordId,
   base,
-}) => {
-  const filteredCards = cards.filter((v) => !isEmpty(v.node) && !v.node.data.Hidden);
-
-  return (
-    <>
-      { filteredCards.map((v) => {
-        const { data } = v.node;
-        return (
-          <div key={v.node.recordId} className="col-xs-12 col-sm-6 col-lg-3">
-            <Link to={`/${base}/${v.node.recordId}`} className="thumbnail">
-              <div className="image" data-toggle="tooltip" style={{ backgroundColor: data.Colour }}>
-                { data.Priority && <span className="priority">PRIORITY</span>}
-                { data.Image && !data.Illustration && data.Image[0].url.endsWith('.svg') && <img src={data.Image[0].url} height="110" alt="" />}
-                { data.Image && !data.Illustration && !data.Image[0].url.endsWith('.svg') && <img src={data.Image[0].url} width="100%" alt="" />}
-                { data.Illustration && <img src={data.Illustration[0].url} width="150" alt="" />}
-              </div>
-              <div className="text">
-                <h3 data-toggle="tooltip" title="Opportunities">{ data.Name }</h3>
-                <p className="badges" data-toggle="tooltip" title="Opportunities">
-                  { data.Attributes && data.Attributes.map((attribute) => (
-                    <span className="badge badge-pill badge-primary">{ attribute }</span>
-                  ))}
-                  { data.Personas && data.Personas.map((persona) => (
-                    <span className="badge badge-pill badge-secondary">{persona.data.Name}</span>
-                  ))}
-                </p>
-              </div>
-            </Link>
-          </div>
-        );
-      })}
-    </>
-  );
-};
+  backgroundColor,
+  priority,
+  image,
+  illustration,
+  name,
+  attributes,
+  personas,
+}) => (
+  <div key={recordId}>
+    <Link to={`/${base}/${recordId}`} className="thumbnail">
+      <div className="image" style={{ backgroundColor }}>
+        { priority && <span className="priority">PRIORITY</span> }
+        { image && <img src={image} height="110" alt="" />}
+        { illustration && <img src={illustration} width="150" alt="" />}
+      </div>
+      <div className="text">
+        <h3>{ name }</h3>
+        <p className="badges">
+          { attributes && attributes.map((attribute) => (
+            <span key={shortid.generate()} className="">{ attribute }</span>
+          ))}
+          { personas && personas.map((persona) => (
+            <span key={shortid.generate()} className="">{persona.data.Name}</span>
+          ))}
+        </p>
+      </div>
+    </Link>
+  </div>
+);
 
 Card.defaultProps = {
-  cards: [],
   base: '',
+  backgroundColor: '#FFF',
+  priority: false,
+  image: '',
+  illustration: '',
+  attributes: [],
+  personas: [],
 };
 
 Card.propTypes = {
-  cards: PropTypes.arrayOf(
+  recordId: PropTypes.string.isRequired,
+  base: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  priority: PropTypes.bool,
+  image: PropTypes.string,
+  illustration: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  attributes: PropTypes.arrayOf(
+    PropTypes.string,
+  ),
+  personas: PropTypes.arrayOf(
     PropTypes.shape({
-      recordId: PropTypes.string,
+      data: PropTypes.shape({
+        Name: PropTypes.string,
+      }),
     }),
   ),
-  base: PropTypes.string,
 };
 
 export default Card;

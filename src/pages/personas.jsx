@@ -3,29 +3,25 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
-import Card from '../components/card';
 import SEO from '../components/seo';
+import CardList from '../components/cardList';
 
-const PersonasPage = ({ data }) => {
-  const list = data.allAirtable.edges;
-
-  return (
-    <Layout>
-      <SEO title="Personas" />
-      <div className="container">
-        <header>
-          <h1>Personas</h1>
-          <p>Identified opportunities for delivering customer and business value.</p>
-        </header>
-
-        <hr />
-        <div className="row">
-          { list && <Card base="personas" cards={list} /> }
-        </div>
-      </div>
-    </Layout>
-  );
-};
+const PersonasPage = ({ data }) => (
+  <Layout>
+    <SEO title="Personas" />
+    <div className="container">
+      <header>
+        <h1>Personas</h1>
+        <p>Identified opportunities for delivering customer and business value.</p>
+      </header>
+      <hr />
+      <CardList
+        base="personas"
+        data={data.allAirtable.edges}
+      />
+    </div>
+  </Layout>
+);
 
 export const query = graphql`
   {

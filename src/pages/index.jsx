@@ -64,7 +64,7 @@ const IndexPage = ({ data }) => {
               <li>
                 <Thumbnail
                   link={t.link}
-                  backgroundColour={t.backgroundColour}
+                  backgroundColor={t.backgroundColour}
                   icon={t.icon}
                   header={t.header}
                   description={t.description}
