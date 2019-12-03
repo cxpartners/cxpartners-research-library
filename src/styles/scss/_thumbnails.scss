@@ -4,13 +4,19 @@
 	}
 }
 
+.thumbnail-list {
+	display: flex;
+	flex-wrap: wrap;
+}
+
 .thumbnail {
-  display: block;
+	display: block;
+	flex: 0 1 500px;
+	box-sizing: border-box;
+	margin: 0 0 2rem 0;
 	border: 1px solid $borderLight;
-  border-radius: 4px ;
-  margin-bottom: 2rem;
+  border-radius: 4px;
   text-align: center;
-  padding: 0 !important;
 	transition: border .1s ease-in-out;
 	
 	header {
@@ -23,6 +29,8 @@
 	}
 
 	.priority {
+		position: absolute;
+		top: 1rem;
 		z-index: 2;
 		background-color: $white;
 		color: $offBlack;
@@ -61,8 +69,27 @@
 	}
 }
 
-a.thumbnail.active, 
-a.thumbnail:focus, 
-a.thumbnail:hover {
+li.thumbnail.active, 
+li.thumbnail:focus, 
+li.thumbnail:hover {
 	border-color: $highlight;
+}
+
+@media only screen and (min-width: $mobile-breakpoint) {
+	.thumbnail {
+		max-width: calc(50% - 1rem);
+		margin: 0.5rem 0.5rem 2rem 0.5rem;
+	}
+}
+
+@media only screen and (min-width: $tablet-breakpoint) {
+	.thumbnail {
+		max-width: calc(33.33% - 1rem);
+	}
+}
+
+@media only screen and (min-width: $desktop-breakpoint) {
+	.thumbnail {
+		max-width: calc(25% - 1rem);
+	}
 }

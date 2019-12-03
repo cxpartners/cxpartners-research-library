@@ -8,7 +8,7 @@
 	.container {
 		display: flex;
 		justify-content: space-between;
-		padding: 1.5rem;
+		padding: 1.5rem 0;
 		color: $black;
 		font-size: 1.2em;
 	}
@@ -16,6 +16,7 @@
 	.logo {
 		display: flex;
 		align-items: center;
+		margin: 0 0 0 1rem;
 
 		img {
 			display: flex;
@@ -27,6 +28,7 @@
 	.nav-list {
 		display: flex;
 		align-items: center;
+		margin: 0 1rem 0 0;
 
 		ul {
 			display: none;
@@ -34,6 +36,7 @@
 
 		li {
 			margin: 0 0.5rem;
+			font-size: 1rem;
 		}
 	}
 

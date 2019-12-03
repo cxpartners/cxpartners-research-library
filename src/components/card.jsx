@@ -15,8 +15,8 @@ const Card = ({
   attributes,
   personas,
 }) => (
-  <div key={recordId}>
-    <Link to={`/${base}/${recordId}`} className="thumbnail">
+  <li key={recordId} className="thumbnail">
+    <Link to={`/${base}/${recordId}`}>
       <div className="image" style={{ backgroundColor }}>
         { priority && <span className="priority">PRIORITY</span> }
         { image && <img src={image} height="110" alt="" />}
@@ -34,7 +34,7 @@ const Card = ({
         </p>
       </div>
     </Link>
-  </div>
+  </li>
 );
 
 Card.defaultProps = {

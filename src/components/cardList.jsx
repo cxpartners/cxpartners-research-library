@@ -12,23 +12,21 @@ const cardList = ({
   const list = data && data.filter((v) => !isEmpty(v.node) && !v.node.data.Hidden);
   console.log(data);
   return (
-    <ul>
+    <ul className="thumbnail-list">
       { list.map((l) => {
         const d = l.node.data;
         return (
-          <li key={l.node.recordId}>
-            <Card
-              base={base}
-              recordId={l.node.recordId}
-              backgroundColor={d.Colour}
-              priority={d.Priority}
-              image={d.Image && d.Image[0].url}
-              illustration={d.Illustration && d.Illustration[0].url}
-              name={d.Name}
-              attributes={d.Attributes}
-              personas={d.Personas}
-            />
-          </li>
+          <Card
+            base={base}
+            recordId={l.node.recordId}
+            backgroundColor={d.Colour}
+            priority={d.Priority}
+            image={d.Image && d.Image[0].url}
+            illustration={d.Illustration && d.Illustration[0].url}
+            name={d.Name}
+            attributes={d.Attributes}
+            personas={d.Personas}
+          />
         );
       })}
     </ul>

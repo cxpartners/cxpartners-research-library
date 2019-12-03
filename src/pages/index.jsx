@@ -59,17 +59,15 @@ const IndexPage = ({ data }) => {
         </header>
         <hr />
         <nav>
-          <ul>
+          <ul className="thumbnail-list">
             { thumbnails.map((t) => (
-              <li>
-                <Thumbnail
-                  link={t.link}
-                  backgroundColor={t.backgroundColour}
-                  icon={t.icon}
-                  header={t.header}
-                  description={t.description}
-                />
-              </li>
+              <Thumbnail
+                link={t.link}
+                backgroundColor={t.backgroundColour}
+                icon={t.icon}
+                header={t.header}
+                description={t.description}
+              />
             ))}
           </ul>
         </nav>

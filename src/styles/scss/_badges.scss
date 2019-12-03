@@ -1,12 +1,12 @@
 .badges {
 	margin: 15px 0 0 0;
-}
 
-.badge {
-	background-color: $offWhite;
-	color: $offBlack;
-	padding: 3px 10px;
-	font-weight: normal;
-	line-height: 1.2;
-	margin: 3px 2px;
+	span {
+		background-color: $offWhite;
+		color: $offBlack;
+		padding: 3px 10px;
+		font-weight: normal;
+		line-height: 1.2;
+		margin: 3px 2px;
+	}
 }
