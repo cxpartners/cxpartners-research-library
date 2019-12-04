@@ -5,104 +5,79 @@ import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout';
 import Insights from '../components/insights';
 import SEO from '../components/seo';
+import Hero from '../components/hero';
+import Card from '../components/card';
 
 const opportunities = ({ data, pageContext }) => {
-  const item = data.airtable.data;
+  const d = data.airtable.data;
 
   return (
     <Layout>
-      <SEO title={item.Name} />
-      <header className="masthead" style={{ backgroundColor: item.Colour }}>
-        <img src={item.Image && item.Image[0].url} height="60%" alt="" />
-        <div className="container">
-          <div className="title">
-            <div className="options">
-              <button
-                type="button"
-                className="back"
-                onClick={() => window.history.back()}
-              >
-                <span className="glyphicon glyphicon-menu-left" />
-                <span className="text">Back</span>
-              </button>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href={pageContext.recordId && `https://airtable.com/tblxlnayTnSiUWwL4/viwnmGoyEAmF3YgDV/${pageContext.recordId}`}
-                className="external"
-              >
-                View in Airtable
-              </a>
-            </div>
-            <h4>Opportunity</h4>
-            <h1>{item.Name}</h1>
-            <p
-              className="badges"
-              data-toggle="tooltip"
-              title="Opportunities"
-            >
-              { item.Attributes && item.Attributes.map((attribute) => (
-                <span className="badge badge-pill badge-primary">{ attribute }</span>
-              ))}
-              { item.Personas && item.Personas.map((persona) => (
-                <span className="badge badge-pill badge-secondary">{ persona.data.Label }</span>
-              ))}
-            </p>
-          </div>
-        </div>
-      </header>
+      <SEO title={d.Name} />
+      <Hero
+        imgUrl={d.Image && d.Image[0].url}
+        recordId={pageContext.recordId}
+        location="Opportunities"
+        title={d.Name}
+        attributes={d.Attributes ? d.Attributes : []}
+        personas={d.Personas ? d.Personas : []}
+      />
       <div className="container">
-        <h2>Summary</h2>
-        <p className="secondary" data-toggle="tooltip" title="Tooltip">{ item.Summary }</p>
+        <h4>Summary</h4>
+        <p>{ d.Summary }</p>
         <hr />
-        <h2>Business Value</h2>
-        <p className="secondary">{ item.Business_Value }</p>
+        <h4>Business Value</h4>
+        <p>{ d.Business_Value }</p>
         <hr />
-        { item.Story_1__Legacy_ && (
+        { d.Story_1__Legacy_ && (
           <>
-            <h2>Stories</h2>
-            { item.Story_1_Images___Legacy_ && (
-              <div className="three-col">
-                <div className="thumbnail">
-                  <div className="image" data-toggle="tooltip" title="Opportunities">
-                    <a target="_blank" rel="noopener noreferrer" href={item.Story_1_Images___Legacy_[0].url}>
-                      <img src={item.Story_1_Images___Legacy_[0].url} width="400" alt="" />
-                    </a>
-                  </div>
-                  <div className="text">
-                    <h5 data-toggle="tooltip" title="Opportunities">Story</h5>
-                    <p className="small">{ item.Story_1__Legacy_ }</p>
-                  </div>
-                </div>
+            <h4>Stories</h4>
+            <div className="thumbnail">
+              <div className="image">
+                <a target="_blank" rel="noopener noreferrer" href={d.Story_1_Images___Legacy_[0].url}>
+                  <img src={d.Story_1_Images___Legacy_[0].url} width="400" alt="" />
+                </a>
               </div>
-            )}
+              <div className="text">
+                <h5>Story</h5>
+                <p className="small">{ d.Story_1__Legacy_ }</p>
+              </div>
+            </div>
           </>
         )}
         <hr />
-        <h2>Design Challenges</h2>
-        <p className="secondary">{ item.Design_Challenge }</p>
-        { item.Example_Concepts && (
+        <h4>Design Challenges</h4>
+        <p className="secondary">{ d.Design_Challenge }</p>
+        { d.Example_Concepts && (
           <>
             <hr />
-            <h2>Concepts</h2>
-            <div className="three-col">
-              <Link to={`/concepts/${item.Example_Concepts[0].recordId}`} className="thumbnail">
-                <div className="image" data-toggle="tooltip" title="Opportunities ">
-                  { item.Example_Concepts[0].data.Illustration && (
-                    <img src={item.Example_Concepts[0].data.Illustration[0].url} width="400" alt="" />
+            <h4>Concepts</h4>
+            <div>
+              <Card
+                base="concepts"
+                recordId={d.Example_Concepts[0].recordId}
+                illustration={d.Example_Concepts[0].data.Illustration
+                  && d.Example_Concepts[0].data.Illustration[0].url}
+                name="Concepts"
+                description={d.Example_Concepts[0].data.Name}
+              />
+              <Link to={`/concepts/${d.Example_Concepts[0].recordId}`} className="thumbnail">
+                <div className="image">
+                  { d.Example_Concepts[0].data.Illustration && (
+                    <img src={d.Example_Concepts[0].data.Illustration[0].url} width="400" alt="" />
                   )}
                 </div>
                 <div className="text">
-                  <h5 data-toggle="tooltip" title="Opportunities">Concept</h5>
-                  <p className="small">{ item.Example_Concepts[0].data.Name }</p>
+                  <h5>Concept</h5>
+                  <p className="small">{ d.Example_Concepts[0].data.Name }</p>
                 </div>
               </Link>
             </div>
           </>
         )}
         <hr />
-        { item.Key_Insights && <Insights title="Key Insights" insights={item.Key_Insights} />}
-        { item.Supporting_Insights && <Insights title="Supporting Insights" insights={item.Key_Insights} />}
+        { d.Key_Insights && <Insights title="Key Insights" insights={d.Key_Insights} />}
+        { d.Supporting_Insights && <Insights title="Supporting Insights" insights={d.Key_Insights} />}
       </div>
     </Layout>
   );

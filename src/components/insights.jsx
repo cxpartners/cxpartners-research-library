@@ -6,22 +6,23 @@ const Insights = ({
   insights,
 }) => (
   <>
-    { title && <h2>{title}</h2> }
+    { title && <h4>{title}</h4> }
     <div className="list-group cards">
-      { insights && insights.map((insight) => (
-        <a
-          key={insight.recordId}
-          className="list-group-item"
-          target="_blank"
-          rel="noopener noreferrer"
-          href={`https://airtable.com/tblosssvF4nn2TChF/viwIDA3HojnvLxvVf/${insight.recordId}?blocks=hide`}
-        >
-          <p>
-            { insight.data.Insight }
-            <i className="fas fa-external-link-alt" />
-          </p>
-        </a>
-      ))}
+      <ul>
+        { insights && insights.map((insight) => (
+          <li>
+            <a
+              key={insight.recordId}
+              className="list-group-item"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`https://airtable.com/tblosssvF4nn2TChF/viwIDA3HojnvLxvVf/${insight.recordId}?blocks=hide`}
+            >
+              <p>{ insight.data.Insight }</p>
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   </>
 );

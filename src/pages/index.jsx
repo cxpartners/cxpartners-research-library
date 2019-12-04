@@ -50,9 +50,9 @@ const IndexPage = ({ data }) => {
       <SEO title="Home" />
       <div className="container">
         <header>
-          <h1>
+          <h2>
             {`${company} Research Library`}
-          </h1>
+          </h2>
           <p>
             {`This library is a central resource containing ${company.slice(-1) === 's' ? `${company}'` : `${company}'s`} customer insights and hypotheses, as well as details of the research activities that informed them.`}
           </p>

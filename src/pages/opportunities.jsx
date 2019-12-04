@@ -11,7 +11,7 @@ const OpportunitiesPage = ({ data }) => (
     <SEO title="Opportunities" />
     <div className="container">
       <header>
-        <h1>Opportunities</h1>
+        <h2>Opportunities</h2>
         <p>Identified opportunities for delivering customer and business value.</p>
       </header>
       <hr />

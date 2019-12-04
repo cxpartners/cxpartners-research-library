@@ -15,7 +15,9 @@ const Header = ({
         style={{ background: brandColour }}
       >
         <Link to="/" className="logo">
-          <img src={logo} alt="" />
+          <h1>
+            <img src={logo} alt="" />
+          </h1>
         </Link>
         <div className={`nav-list nav-list-${showNavbar ? 'active' : ''}`}>
           <button

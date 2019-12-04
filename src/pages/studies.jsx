@@ -11,7 +11,7 @@ const StudiesPage = ({ data }) => (
     <SEO title="Studies" />
     <div className="container">
       <header>
-        <h1>Studies</h1>
+        <h2>Studies</h2>
         <p>
           Overview of research and design studies carried out
           that informed the content of this library.

@@ -11,7 +11,7 @@ const PersonasPage = ({ data }) => (
     <SEO title="Personas" />
     <div className="container">
       <header>
-        <h1>Personas</h1>
+        <h2>Personas</h2>
         <p>Identified opportunities for delivering customer and business value.</p>
       </header>
       <hr />

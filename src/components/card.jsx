@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
-const shortid = require('shortid');
+import Badges from './badges';
 
 const Card = ({
   recordId,
@@ -24,14 +24,10 @@ const Card = ({
       </div>
       <div className="text">
         <h3>{ name }</h3>
-        <p className="badges">
-          { attributes && attributes.map((attribute) => (
-            <span key={shortid.generate()} className="">{ attribute }</span>
-          ))}
-          { personas && personas.map((persona) => (
-            <span key={shortid.generate()} className="">{persona.data.Name}</span>
-          ))}
-        </p>
+        <Badges
+          attributes={attributes || []}
+          personas={personas || []}
+        />
       </div>
     </Link>
   </li>
