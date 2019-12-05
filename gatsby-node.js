@@ -3,10 +3,14 @@ const path = require('path');
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  const opportunitiesTemplate = path.resolve('src/templates/opportunities.jsx');
-  const conceptsTemplate = path.resolve('src/templates/concepts.jsx');
-  const personasTemplate = path.resolve('src/templates/personas.jsx');
-  const studiesTemplate = path.resolve('src/templates/studies.jsx');
+  const templates = [
+    { name: 'opportunities', template: path.resolve('src/templates/opportunities.jsx') },
+    { name: 'concepts', template: path.resolve('src/templates/concepts.jsx') },
+    { name: 'personas', template: path.resolve('src/templates/personas.jsx') },
+    { name: 'studies', template: path.resolve('src/templates/studies.jsx') },
+  ];
+
+  const pages = templates.map((t) => t.name);
 
   return graphql(`
     query loadPagesQuery {
@@ -25,14 +29,13 @@ exports.createPages = ({ graphql, actions }) => {
     }
 
     result.data.allAirtable.edges.forEach((edge) => {
-      const pages = ['opportunities', 'concepts', 'personas', 'studies'];
       const table = edge.node.table.toLowerCase();
       const { recordId } = edge.node;
 
       if (pages.includes(table)) {
         createPage({
           path: `/${table}/${recordId}`,
-          component: eval(`${table}Template`),
+          component: templates.find((t) => t.name === table).template,
           context: { recordId },
         });
       }
