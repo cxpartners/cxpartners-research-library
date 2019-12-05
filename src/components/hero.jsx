@@ -7,12 +7,13 @@ const Hero = ({
   imgUrl,
   recordId,
   location,
+  label,
   title,
   attributes,
   personas,
 }) => (
   <header>
-    { imgUrl && <img src={imgUrl} width="100%" alt="" /> }
+    { imgUrl && <div className="hero-image" style={{ backgroundImage: `url(${imgUrl})` }} /> }
     <div className="container">
       <div className="options">
         <a
@@ -25,7 +26,7 @@ const Hero = ({
         </a>
       </div>
       <h2 className="subtitle">{location}</h2>
-      <h3 className="headline">{title}</h3>
+      <h3 className="headline">{ label ? `${label}: ${title}` : title}</h3>
       <Badges
         attributes={attributes || []}
         personas={personas || []}
@@ -35,6 +36,7 @@ const Hero = ({
 );
 
 Hero.defaultProps = {
+  label: '',
   attributes: [],
   personas: [],
 };
@@ -43,6 +45,7 @@ Hero.propTypes = {
   imgUrl: PropTypes.string.isRequired,
   recordId: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
+  label: PropTypes.string,
   title: PropTypes.string.isRequired,
   attributes: PropTypes.arrayOf(
     PropTypes.string,

@@ -4,56 +4,35 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import Hero from '../components/hero';
 
 const personas = ({ data, pageContext }) => {
-  const item = data.airtable.data;
+  const d = data.airtable.data;
 
   return (
     <Layout>
-      <SEO title={`${item.Label}: ${item.Name}`} />
-      <header className="masthead" style={{ backgroundColor: item.Colour }}>
-        <img src={item.Image && item.Image[0].url} width="20%" alt="" />
-        <div className="container">
-          <div className="title">
-            <div className="options">
-              <button
-                type="button"
-                className="back"
-                onClick={() => window.history.back()}
-              >
-                <span className="glyphicon glyphicon-menu-left" />
-                <span className="text">Back</span>
-              </button>
-              <a
-                className="external"
-                target="_blank"
-                rel="noopener noreferrer"
-                href={`https://airtable.com/tbl4zDvg1zEuS33j6/viwluHJfuYdcVx7HR/${pageContext.recordId}`}
-                key={pageContext.recordId}
-              >
-                View in Airtable
-              </a>
-            </div>
-            <h1>{`${item.Label}: ${item.Name}`}</h1>
-          </div>
-        </div>
-      </header>
+      <SEO title={`${d.Label}: ${d.Name}`} />
+      <Hero
+        imgUrl={d.Image && d.Image[0].url}
+        recordId={pageContext.recordId}
+        location="Personas"
+        label={d.Label}
+        title={d.Name}
+      />
       <div className="container">
-        <div className="one-col">
-          <h2>Summary</h2>
-          <p>{ item.Notes && item.Notes }</p>
-          { item.Image && (
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href={item.Diagram && item.Diagram[0].url}
-            >
-              <div className="persona-img">
-                <img src={item.Diagram && item.Diagram[0].url} width="100%" alt="" />
-              </div>
-            </a>
-          )}
-        </div>
+        <h4>Summary</h4>
+        <p>{ d.Notes && d.Notes }</p>
+        { d.Image && (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={d.Diagram && d.Diagram[0].url}
+          >
+            <div className="persona-img">
+              <img src={d.Diagram && d.Diagram[0].url} width="100%" alt="" />
+            </div>
+          </a>
+        )}
         <hr />
       </div>
     </Layout>

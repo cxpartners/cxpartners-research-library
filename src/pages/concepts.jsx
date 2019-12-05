@@ -31,6 +31,9 @@ export const query = graphql`
           recordId
           data {
             Name
+            Image {
+              url
+            }
             Illustration {
               url
             }

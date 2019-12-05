@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 import Insights from '../components/insights';
@@ -48,9 +48,9 @@ const opportunities = ({ data, pageContext }) => {
         <hr />
         <h4>Design Challenges</h4>
         <p className="secondary">{ d.Design_Challenge }</p>
+        <hr />
         { d.Example_Concepts && (
           <>
-            <hr />
             <h4>Concepts</h4>
             <div>
               <Card
@@ -61,21 +61,10 @@ const opportunities = ({ data, pageContext }) => {
                 name="Concepts"
                 description={d.Example_Concepts[0].data.Name}
               />
-              <Link to={`/concepts/${d.Example_Concepts[0].recordId}`} className="thumbnail">
-                <div className="image">
-                  { d.Example_Concepts[0].data.Illustration && (
-                    <img src={d.Example_Concepts[0].data.Illustration[0].url} width="400" alt="" />
-                  )}
-                </div>
-                <div className="text">
-                  <h5>Concept</h5>
-                  <p className="small">{ d.Example_Concepts[0].data.Name }</p>
-                </div>
-              </Link>
             </div>
+            <hr />
           </>
         )}
-        <hr />
         { d.Key_Insights && <Insights title="Key Insights" insights={d.Key_Insights} />}
         { d.Supporting_Insights && <Insights title="Supporting Insights" insights={d.Key_Insights} />}
       </div>

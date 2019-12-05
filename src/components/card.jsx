@@ -4,41 +4,51 @@ import { Link } from 'gatsby';
 
 import Badges from './badges';
 
+import randomColour from '../utils/randomColour';
+
 const Card = ({
   recordId,
   base,
   backgroundColor,
   priority,
   image,
+  icon,
   illustration,
   name,
+  description,
   attributes,
   personas,
-}) => (
-  <li key={recordId} className="thumbnail">
-    <Link to={`/${base}/${recordId}`}>
-      <div className="image" style={{ backgroundColor }}>
-        { priority && <span className="priority">PRIORITY</span> }
-        { image && <img src={image} height="110" alt="" />}
-        { illustration && <img src={illustration} width="150" alt="" />}
-      </div>
-      <div className="text">
-        <h3>{ name }</h3>
-        <Badges
-          attributes={attributes || []}
-          personas={personas || []}
-        />
-      </div>
-    </Link>
-  </li>
-);
+}) => {
+  const colour = backgroundColor || randomColour();
+  return (
+    <li key={recordId} className="thumbnail">
+      <Link to={`/${base}/${recordId}`}>
+        <div className="image" style={image ? { backgroundImage: `url(${image})` } : { backgroundColor: colour }}>
+          { priority && <span className="priority">PRIORITY</span> }
+          { icon && <img src={icon} height="110" alt="" />}
+          { illustration && <img src={illustration} width="150" alt="" />}
+        </div>
+        <div className="text">
+          <h3>{ name }</h3>
+          { description && <p>{ description }</p>}
+          <Badges
+            attributes={attributes || []}
+            personas={personas || []}
+          />
+        </div>
+      </Link>
+    </li>
+  );
+};
 
 Card.defaultProps = {
   base: '',
   backgroundColor: '#FFF',
   priority: false,
   image: '',
+  icon: '',
   illustration: '',
+  description: '',
   attributes: [],
   personas: [],
 };
@@ -49,8 +59,10 @@ Card.propTypes = {
   backgroundColor: PropTypes.string,
   priority: PropTypes.bool,
   image: PropTypes.string,
+  icon: PropTypes.string,
   illustration: PropTypes.string,
   name: PropTypes.string.isRequired,
+  description: PropTypes.string,
   attributes: PropTypes.arrayOf(
     PropTypes.string,
   ),

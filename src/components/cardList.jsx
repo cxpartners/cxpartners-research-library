@@ -22,6 +22,7 @@ const cardList = ({
             backgroundColor={d.Colour}
             priority={d.Priority}
             image={d.Image && d.Image[0].url}
+            icon={d.Icon && d.Icon[0].url}
             illustration={d.Illustration && d.Illustration[0].url}
             name={d.Name}
             attributes={d.Attributes}

@@ -5,28 +5,27 @@ body {
 
 main {
   margin: 4.5rem 0 0 0;
-  padding: 1rem;
   box-sizing: border-box;
 }
 
-.content-wrapper {
-  margin: 1rem 0 0 0;
+.container {
+  padding: 0 1rem;
 }
 
 @media only screen and (min-width: $mobile-breakpoint) {
-	main {
-    padding: 2rem;
+	.container {
+    padding: 0 2rem;
   }
 }
 
 @media only screen and (min-width: $tablet-breakpoint) {
-	main {
-    padding: 3rem;
+	.container {
+    padding: 0 3rem;
   }
 }
 
 @media only screen and (min-width: $desktop-breakpoint) {
-	main {
-    padding: 4rem;
+	.container {
+    padding: 0 4rem;
   }
 }

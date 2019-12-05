@@ -4,50 +4,32 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import Hero from '../components/hero';
 
 const studies = ({ data, pageContext }) => {
-  const item = data.airtable.data;
+  const d = data.airtable.data;
+  console.log('data', d);
 
   return (
     <Layout>
-      <SEO title={item.Name} />
-      <header className="masthead" style={{ backgroundColor: item.Colour }}>
-        <img src={item.Image && item.Image[0].url} width="100%" alt="" />
-        <div className="container">
-          <div className="title">
-            <div className="options">
-              <button
-                type="button"
-                className="back"
-                onClick={() => window.history.back()}
-              >
-                <span className="glyphicon glyphicon-menu-left" />
-                <span className="text">Back</span>
-              </button>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href={pageContext.recordId && `https://airtable.com/tblmB3GpSAgCNKqnY/viwZi3c8qOXxlLza2/${pageContext.recordId}`}
-                className="external"
-              >
-                View in Airtable
-              </a>
-            </div>
-            <h4>Study</h4>
-            <h1>{ item.Name }</h1>
-          </div>
-        </div>
-      </header>
+      <SEO title={d.Name} />
+      <Hero
+        imgUrl={d.Image && d.Image[0].url}
+        recordId={pageContext.recordId}
+        location="Studies"
+        title={d.Name}
+      />
       <div className="container">
-        <h2>Summary</h2>
-        <p className="secondary" data-toggle="tooltip" title="Tooltip">{ item.Summary }</p>
-        <h2>What we did</h2>
-        <p className="secondary">{ item.Process }</p>
-        { item.Images && item.Images.map((image) => (
-          <div key={image.id} className="three-col gallery">
+        <h4>Summary</h4>
+        <p>{ d.Summary }</p>
+        <hr />
+        <h4>What we did</h4>
+        <p>{ d.Process }</p>
+        { d.Images && d.Images.map((image) => (
+          <div key={image.id}>
             <a target="_blank" rel="noopener noreferrer" href={image.url} className="thumbnail pop">
               <img src={image.url} alt="" />
-              <p className="secondary">{ image.filename }</p>
+              <p>{ image.filename }</p>
             </a>
           </div>
         ))}

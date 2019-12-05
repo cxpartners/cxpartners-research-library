@@ -34,6 +34,9 @@ export const query = graphql`
             Image {
               url
             }
+            Icon {
+              url
+            }
             Colour
             Hidden
           }
