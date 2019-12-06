@@ -21,7 +21,7 @@ const Card = ({
 }) => {
   const colour = backgroundColor || randomColour();
   return (
-    <li key={recordId} className="thumbnail">
+    <li className="thumbnail">
       <Link to={`/${base}/${recordId}`}>
         <div className="image" style={image ? { backgroundImage: `url(${image})` } : { backgroundColor: colour }}>
           { priority && <span className="priority">PRIORITY</span> }

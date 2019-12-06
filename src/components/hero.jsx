@@ -42,6 +42,7 @@ const Hero = ({
 };
 
 Hero.defaultProps = {
+  imgUrl: '',
   backgroundColour: '',
   label: '',
   attributes: [],
@@ -49,7 +50,7 @@ Hero.defaultProps = {
 };
 
 Hero.propTypes = {
-  imgUrl: PropTypes.string.isRequired,
+  imgUrl: PropTypes.string,
   backgroundColour: PropTypes.string,
   recordId: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,

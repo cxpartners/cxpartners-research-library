@@ -10,13 +10,13 @@ const cardList = ({
   data,
 }) => {
   const list = data && data.filter((v) => !isEmpty(v.node) && !v.node.data.Hidden);
-  console.log(data);
   return (
     <ul className="thumbnail-list">
       { list.map((l) => {
         const d = l.node.data;
         return (
           <Card
+            key={l.node.recordId}
             base={base}
             recordId={l.node.recordId}
             backgroundColor={d.Colour}
