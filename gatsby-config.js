@@ -34,6 +34,14 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /images/,
+        },
+      },
+    },
+    {
       resolve: 'gatsby-source-airtable',
       options: {
         apiKey: process.env.AIRTABLE_API_KEY,
