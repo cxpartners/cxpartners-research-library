@@ -49,7 +49,7 @@ const IndexPage = ({ data }) => {
     <Layout>
       <SEO title="Home" />
       <div className="container">
-        <header>
+        <header className="head">
           <h2>
             {`${company} Research Library`}
           </h2>

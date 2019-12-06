@@ -10,7 +10,7 @@ const StudiesPage = ({ data }) => (
   <Layout>
     <SEO title="Studies" />
     <div className="container">
-      <header>
+      <header className="head">
         <h2>Studies</h2>
         <p>
           Overview of research and design studies carried out
