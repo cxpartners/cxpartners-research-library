@@ -1,18 +1,16 @@
-import { Link } from 'gatsby';
-import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
 
 const Header = ({
   logo,
-  brandColour,
 }) => {
   const [showNavbar, navbarToggle] = useState(false);
 
   return (
     <header className="header">
       <nav
-        className="container"
-        style={{ background: brandColour }}
+        className="nav-container"
       >
         <Link to="/" className="logo">
           <h1>
@@ -52,13 +50,8 @@ const Header = ({
   );
 };
 
-Header.defaultProps = {
-  brandColour: '#FFF',
-};
-
 Header.propTypes = {
   logo: PropTypes.string.isRequired,
-  brandColour: PropTypes.string,
 };
 
 export default Header;

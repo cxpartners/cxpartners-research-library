@@ -36,6 +36,7 @@ const Hero = ({
           attributes={attributes || []}
           personas={personas || []}
         />
+        <hr />
       </div>
     </header>
   );

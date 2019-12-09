@@ -5,6 +5,7 @@ import '../styles/scss/App.scss';
 
 import SEO from './seo';
 import Header from './header';
+import Footer from './footer';
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -25,16 +26,17 @@ const Layout = ({ children }) => (
         <SEO title="Research Library" />
         <Header
           logo={data.airtable.data.Logo[0].url}
-          brandColour={data.airtable.data.Brand_Colour__Primary_}
         />
-        <div>
+        <>
           <main className="main">
             <div className="content-wrapper">
               {children}
             </div>
           </main>
-          <footer />
-        </div>
+          <Footer
+            brandColour={data.airtable.data.Brand_Colour__Primary_}
+          />
+        </>
       </>
     )}
   />

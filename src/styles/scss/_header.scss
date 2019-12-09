@@ -1,16 +1,21 @@
 .header {
 	position: fixed;
 	top: 0;
-  width: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
 	z-index: 1000;
 	border-bottom: 1px solid $borderLight;
-
-	.container {
+	background: $white;
+	
+	.nav-container {
 		display: flex;
 		justify-content: space-between;
 		padding: 1.5rem 0;
 		color: $black;
 		font-size: 1.2em;
+		width: 100%;
+		max-width: 1300px;
 	}
 	
 	.logo {

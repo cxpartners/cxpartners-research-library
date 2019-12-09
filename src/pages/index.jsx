@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
 import opportunitiesIcon from '../images/icon_bird.svg';
-import conceptsIcon from '../images/icon_desk-lamp.svg';
-import personasIcon from '../images/icon_paper-plane.svg';
-import studiesIcon from '../images/icon_woman.svg';
+import conceptsIcon from '../images/icon_paper-plane.svg';
+import personasIcon from '../images/icon_woman.svg';
+import studiesIcon from '../images/icon_desk-lamp.svg';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';

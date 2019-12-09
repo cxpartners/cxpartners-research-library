@@ -1,0 +1,39 @@
+.footer {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  margin: 4rem 0 0 0;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 3rem 2rem;
+  color: white;
+  width: 100%;
+  max-width: 1300px;
+
+  a {
+    display: flex;
+    align-items: center;
+    width: 40px;
+
+    &:not(:last-child) {
+      margin: 0 0.5rem;
+    }
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+
+    &:hover {
+      path {
+        fill: $orange;
+        transition: fill 0.4s ease;
+      }
+    }
+  }
+}
+
