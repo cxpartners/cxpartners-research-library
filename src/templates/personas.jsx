@@ -14,6 +14,7 @@ const personas = ({ data, pageContext }) => {
       <SEO title={`${d.Label}: ${d.Name}`} />
       <Hero
         imgUrl={d.Image && d.Image[0].url}
+        baseUrl="/personas"
         recordId={pageContext.recordId}
         location="Personas"
         label={d.Label}

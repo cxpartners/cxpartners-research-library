@@ -16,6 +16,7 @@ const opportunities = ({ data, pageContext }) => {
       <SEO title={d.Name} />
       <Hero
         imgUrl={d.Image && d.Image[0].url}
+        baseUrl="/opportunities"
         recordId={pageContext.recordId}
         location="Opportunities"
         title={d.Name}
@@ -32,17 +33,12 @@ const opportunities = ({ data, pageContext }) => {
         { d.Story_1__Legacy_ && (
           <>
             <h4>Stories</h4>
-            <div className="thumbnail">
-              <div className="image">
-                <a target="_blank" rel="noopener noreferrer" href={d.Story_1_Images___Legacy_[0].url}>
-                  <img src={d.Story_1_Images___Legacy_[0].url} width="400" alt="" />
-                </a>
-              </div>
-              <div className="text">
-                <h5>Story</h5>
-                <p className="small">{ d.Story_1__Legacy_ }</p>
-              </div>
-            </div>
+            <Card
+              recordUrl={d.Story_1_Images___Legacy_[0].url}
+              illustration={d.Story_1_Images___Legacy_[0].url}
+              name="Story"
+              description={d.Story_1__Legacy_}
+            />
           </>
         )}
         <hr />
@@ -52,16 +48,14 @@ const opportunities = ({ data, pageContext }) => {
         { d.Example_Concepts && (
           <>
             <h4>Concepts</h4>
-            <div>
-              <Card
-                base="concepts"
-                recordId={d.Example_Concepts[0].recordId}
-                illustration={d.Example_Concepts[0].data.Illustration
-                  && d.Example_Concepts[0].data.Illustration[0].url}
-                name="Concepts"
-                description={d.Example_Concepts[0].data.Name}
-              />
-            </div>
+            <Card
+              base="concepts"
+              recordId={d.Example_Concepts[0].recordId}
+              illustration={d.Example_Concepts[0].data.Illustration
+                && d.Example_Concepts[0].data.Illustration[0].url}
+              name="Concepts"
+              description={d.Example_Concepts[0].data.Name}
+            />
             <hr />
           </>
         )}

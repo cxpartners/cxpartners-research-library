@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
 
 import Badges from './badges';
 import randomColour from '../utils/randomColour';
 
 const Hero = ({
   imgUrl,
+  baseUrl,
   backgroundColour,
   recordId,
   location,
@@ -30,7 +32,11 @@ const Hero = ({
             View in Airtable
           </a>
         </div>
-        <h2 className="subtitle">{location}</h2>
+        <h2 className="subtitle">
+          <Link to={baseUrl}>
+            {location}
+          </Link>
+        </h2>
         <h3 className="headline">{ label ? `${label}: ${title}` : title}</h3>
         <Badges
           attributes={attributes || []}
@@ -52,6 +58,7 @@ Hero.defaultProps = {
 
 Hero.propTypes = {
   imgUrl: PropTypes.string,
+  baseUrl: PropTypes.string.isRequired,
   backgroundColour: PropTypes.string,
   recordId: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,

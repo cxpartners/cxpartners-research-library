@@ -15,6 +15,7 @@ const studies = ({ data, pageContext }) => {
       <SEO title={d.Name} />
       <Hero
         imgUrl={d.Image && d.Image[0].url}
+        baseUrl="/studies"
         recordId={pageContext.recordId}
         location="Studies"
         title={d.Name}

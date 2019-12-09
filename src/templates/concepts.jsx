@@ -17,6 +17,7 @@ const concepts = ({
       <SEO title={d.Name} />
       <Hero
         imgUrl={d.Image && d.Image[0].url}
+        baseUrl="/concepts"
         recordId={pageContext.recordId}
         location="Concepts"
         title={d.Name}

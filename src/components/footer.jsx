@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import GitHubIcon from '../images/github.svg';
-import Logo from '../images/cxpartners-logo.svg';
+import GitHubIcon from '../assets/icons/github.svg';
+import Logo from '../assets/icons/cxpartners-logo.svg';
 
 
 const Footer = ({ brandColour }) => (

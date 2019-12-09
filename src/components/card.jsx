@@ -8,6 +8,7 @@ import randomColour from '../utils/randomColour';
 
 const Card = ({
   recordId,
+  recordUrl,
   base,
   backgroundColor,
   priority,
@@ -20,9 +21,20 @@ const Card = ({
   personas,
 }) => {
   const colour = backgroundColor || randomColour();
+  const ConditionalLink = ({
+    condition,
+    link,
+    anchor,
+    children,
+  }) => (condition ? link(children) : anchor(children));
+
   return (
     <li className="thumbnail">
-      <Link to={`/${base}/${recordId}`}>
+      <ConditionalLink
+        condition={base}
+        link={(children) => <Link to={`/${base}/${recordId}`}>{children}</Link>}
+        anchor={(children) => <a href={recordUrl}>{children}</a>}
+      >
         <div className="image" style={image ? { backgroundImage: `url(${image})` } : { backgroundColor: colour }}>
           { priority && <span className="priority">PRIORITY</span> }
           { icon && <img src={icon} height="110" alt="" />}
@@ -36,14 +48,16 @@ const Card = ({
             personas={personas || []}
           />
         </div>
-      </Link>
+      </ConditionalLink>
     </li>
   );
 };
 
 Card.defaultProps = {
+  recordUrl: '',
+  recordId: '',
   base: '',
-  backgroundColor: '#FFF',
+  backgroundColor: '',
   priority: false,
   image: '',
   icon: '',
@@ -54,7 +68,8 @@ Card.defaultProps = {
 };
 
 Card.propTypes = {
-  recordId: PropTypes.string.isRequired,
+  recordId: PropTypes.string,
+  recordUrl: PropTypes.string,
   base: PropTypes.string,
   backgroundColor: PropTypes.string,
   priority: PropTypes.bool,

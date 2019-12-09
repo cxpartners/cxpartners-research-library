@@ -77,6 +77,10 @@ li.thumbnail:hover {
 	border-color: $highlight;
 }
 
+.thumbnail-single {
+	max-width: 300px;
+}
+
 @media only screen and (min-width: $mobile-breakpoint) {
 	.thumbnail {
 		max-width: calc(50% - 1rem);

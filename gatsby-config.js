@@ -18,7 +18,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/src/assets/images`,
       },
     },
     {
@@ -30,14 +30,14 @@ module.exports = {
         background_color: '#0e8add',
         theme_color: '#0e8add',
         display: 'minimal-ui',
-        icon: 'src/images/cxpartners-logo.png',
+        icon: 'src/assets/images/cxpartners-logo.png',
       },
     },
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: /images/,
+          include: /assets\/icons/,
         },
       },
     },
