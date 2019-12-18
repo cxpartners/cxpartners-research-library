@@ -1,97 +1,211 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+# cxpartners - Research Library
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
+A Gatsby implementation that dynamically pulls data from Airtable to create a simple interface for browsing insights and findings from a research project.
 
-## 🚀 Quick start
+## Getting started
 
-1.  **Create a Gatsby site.**
+1. **Install the project**
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+    After cloning the repository, navigate into the root directory of the project and install the dependencies.
 
     ```sh
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
+    npm install
     ```
 
-1.  **Start developing.**
+2. **Setup Airtable**
 
-    Navigate into your new site’s directory and start it up.
+    Create an Airtable account at https://airtable.com/signup, then copy the [template base](https://airtable.com/invite/l?inviteId=inv8gYJQmsjgvU2yG&inviteToken=a3139ac358ae9ebd7ae1a5fe6c55ff2813ea7df46459517e0b2325b595f1eadb) to your account and configure the `config` table to your brand requirements.
+
+3. **Configure environment**
+
+    Update the environment variables in **`.env`** with your Airtable API key, base and table URLs
+  
+    ```sh
+    AIRTABLE_API_KEY=keyXXXXXXXXXXXXXX
+    AIRTABLE_BASE=appXXXXXXXXXXXXXX
+    AIRTABLE_URL=XXXXXXXXXX/XXXXXXXXXX
+    ```
+
+4. **Running Gatsby**
+
+    Start Gatsby on your local environment by running the following command from the project's root directory.
 
     ```sh
-    cd my-default-starter/
     gatsby develop
     ```
 
-1.  **Open the source code and start editing!**
+    It will now be running at `http://localhost:8000`.
 
-    Your site is now running at `http://localhost:8000`!
+5. **Updating data**
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+    As the data is fetched during build, you will need to restart your environment to pull down the latest updates to your Airtable base.
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+    ```sh
+    ^C
+    gatsby develop
+    ```
 
-## 🧐 What's inside?
+## Research guide
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+The layout and structure of the project are built around the application of Brad Frost's concept of [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) to UX Research. We have found that the granular level of detail works well for our research projects, however, you can customise your Airtable to fit your research style.
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
+## Customising Airtable
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+### Adding new table columns
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+All data from any table listed in the tables array of `gatsby-source-airtable` will automatically be fetched from Airtable into Gatsby's GraphQL layer, but won't be available in a component until it's queried.
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+For example, to query a new column from the `Concepts` table, add the column name to the `graphql` query in **`concepts.jsx`** and then add the relevant type to `PropTypes`.
 
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+```sh
+export const query = graphql`
+  {
+    allAirtable(filter: {table: {eq: "Concepts"}}) {
+      edges {
+        node {
+          recordId
+          data {
+            Name
+            Image {
+              url
+            }
+            Illustration {
+              url
+            }
+            Hidden
+            yourNewColumnName
+          }
+        }
+      }
+    }
+  }
+`;
+```
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+The data will then be available through the `data` prop in the component.
 
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
+```sh
+data.allAirtable.edges.node.yourNewColumnName
+```
 
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+The same process can be applied to updating column names.
 
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+### Adding new tables
 
-9.  **`LICENSE`**: Gatsby is licensed under the MIT license.
+To pull in data from a new table, add the table name to the `gatsby-source-airtable` plugin options in **`gatsby-config.js`**
 
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
+```sh
+{
+  resolve: 'gatsby-source-airtable',
+  options: {
+    apiKey: process.env.AIRTABLE_API_KEY,
+    tables: [
+      ...
+      {
+        baseId: process.env.AIRTABLE_BASE,
+        tableName: 'yourTableName',
+      },
+```
 
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+The data from the new table will then be fetched on rebuild making it available for querying by creating a new `graphql` query.
 
-12. **`README.md`**: A text file containing useful reference information about your project.
+```sh
+export const query = graphql`
+  {
+    allAirtable(filter: {table: {eq: "yourNewTableName"}}) {
+      edges {
+        node {
+          recordId
+          data {
+            yourNewColumnName
+          }
+        }
+      }
+    }
+  }
+`;
+```
 
-## 🎓 Learning Gatsby
+The data will then be available through the `data` prop in your component.
 
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
+```sh
+yourNewTableName.edges.node.data.yourNewColumnName
+```
 
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
+The same process can be applied to updating table names.
 
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
+### Creating new template pages
 
-## 💫 Deploy
+If you want to create a new template page for each row in a new table, you will first need to create a new template component in the `templates` directory. Then you will need to add your new table and template to the `templates` array in **`gatsby-node.js`**.
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+```sh
+const templates = [
+  ...
+  {
+    name: 'yourNewTableName',
+    template: path.resolve('src/templates/yourNewTemplateName.jsx'),
+  },
+];
+```
 
-<!-- AUTO-GENERATED-CONTENT:END -->
+Each record in your table will then be created as a page and available on the route `/yourNewTableName/recordId` on rebuild.
+
+### Querying relational data
+
+One of the most powerful features of Airtable is the ability to link to records in other tables therefore acting as a relational database. To query data from a linked record, just add the column name containing the linked record to the `tableLinks` array of that table in **`gatsby-browser.js`**.
+
+```sh
+{
+  resolve: 'gatsby-source-airtable',
+  options: {
+    apiKey: process.env.AIRTABLE_API_KEY,
+    tables: [
+      {
+        baseId: process.env.AIRTABLE_BASE,
+        tableName: 'yourTableName',
+        tableLinks: ['yourColumnName'],
+      },
+      ...
+```
+
+The data will then be available to query on rebuild.
+
+```sh
+export const query = graphql`
+  {
+    allAirtable(filter: {table: {eq: "yourTableName"}}) {
+      edges {
+        node {
+          recordId
+          data {
+            yourNewColumnName {
+              data {
+                yourLinkedRecordName
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+```
+
+To find out more about working with Gatsby, read through the [docs on their website](https://www.gatsbyjs.org/docs/). For more information on fetching data from Airtable, read about the [airtable-source-plugin](https://www.gatsbyjs.org/packages/gatsby-source-airtable/) in the Gatsby plugin docs.
+
+## Deploying
+
+The easiest way to deploy is through Netlify. As Airtable doesn't currently support native webhooks, to pull the latest data down you will need to trigger a manual rebuild, or setup a webhook link in Netlify.
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/)
+
+Ensure that the environment variables are configured to be the same as those in your **`.env`**. In Netlify, these settings can be found in `Settings > Build & deploy > Environment`.
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## Licence
+
+[MIT](https://choosealicense.com/licenses/mit/)
