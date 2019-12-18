@@ -153,7 +153,7 @@ Each record in your table will then be created as a page and available on the ro
 
 ### Querying relational data
 
-One of the most powerful features of Airtable is the ability to link to records in other tables therefore acting as a relational database. To query data from a linked record, just add the column name containing the linked record to the `tableLinks` array of that table in **`gatsby-browser.js`**.
+One of the most powerful features of Airtable is the ability to link to records in other tables, therefore acting as a relational database. To query data from a linked record, just add the column name containing the linked record to the `tableLinks` array of that table in **`gatsby-browser.js`**.
 
 ```sh
 {
@@ -196,7 +196,7 @@ To find out more about working with Gatsby, read through the [docs on their webs
 
 ## Deploying
 
-The easiest way to deploy is through Netlify. As Airtable doesn't currently support native webhooks, to pull the latest data down you will need to trigger a manual rebuild, or setup a webhook link in Netlify.
+The easiest way to deploy is through Netlify. As Airtable doesn't currently support native webhooks, you will need to manually trigger a rebuild to pull down the latest data, or setup a webhook link in Netlify.
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/)
 
